@@ -2,18 +2,18 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'GridView Lazy Load',
       debugShowCheckedModeBanner: false,
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: new MyHomePage(title: 'GridView Lazy Load'),
+      home: MyHomePage(title: 'GridView Lazy Load'),
     );
   }
 }
@@ -23,7 +23,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 const _gridSpacing = 10.0;
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }
 
-    return new SliverToBoxAdapter(
+    return SliverToBoxAdapter(
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -68,8 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    items = new List.generate(30, (index) => '$index');
-    controller = new ScrollController()..addListener(_scrollListener);
+    items = List.generate(30, (index) => '$index');
+    controller = ScrollController()..addListener(_scrollListener);
   }
 
   Widget _buildGridTile(int index) {
@@ -110,8 +110,8 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.symmetric(horizontal: _gridSpacing),
             child: CustomScrollView(
               slivers: <Widget>[
-                new SliverGrid(
-                  gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
+                SliverGrid(
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     childAspectRatio: 1.0,
                     maxCrossAxisExtent: 150.0,
                     crossAxisSpacing: _gridSpacing,
@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
     loading = true;
 
     final _count = items.length;
-    var list = new List.generate(30, (index) => '${_count + index}');
+    var list = List.generate(30, (index) => '${_count + index}');
 
     //Imitating network call...
     await Future.delayed(Duration(seconds: 3));
